@@ -17,9 +17,23 @@ namespace Fiver.Asp.Configuration
             BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+        public static IWebHost BuildWebHost(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                           .ConfigureAppConfiguration((context, builder) =>
+                           {
+                               var env = context.HostingEnvironment;
+
+                               builder
+                                .AddJsonFile("appsettings.json", 
+                                    optional: false, reloadOnChange: true)
+                                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", 
+                                    optional: true, reloadOnChange: true)
+                                .AddEnvironmentVariables();
+
+                           })
+                           .UseStartup<Startup>()
+                           .Build();
+        }
     }
 }
