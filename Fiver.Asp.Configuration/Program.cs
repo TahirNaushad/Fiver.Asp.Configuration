@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
 
 namespace Fiver.Asp.Configuration
 {
@@ -29,13 +30,27 @@ namespace Fiver.Asp.Configuration
         //                   {
         //                       var env = context.HostingEnvironment;
 
-        //                       builder
-        //                        .AddJsonFile("appsettings.json", 
-        //                            optional: false, reloadOnChange: true)
-        //                        .AddJsonFile($"appsettings.{env.EnvironmentName}.json", 
-        //                            optional: true, reloadOnChange: true)
-        //                        .AddEnvironmentVariables();
+        //                       builder.AddJsonFile("appsettings.json", 
+        //                                    optional: true, reloadOnChange: true)
+        //                              .AddJsonFile($"appsettings.{env.EnvironmentName}.json", 
+        //                                    optional: true, reloadOnChange: true);
 
+        //                       if (env.IsDevelopment())
+        //                       {
+        //                           var appAssembly = Assembly.Load(
+        //                               new AssemblyName(env.ApplicationName));
+        //                           if (appAssembly != null)
+        //                           {
+        //                               builder.AddUserSecrets(appAssembly, optional: true);
+        //                           }
+        //                       }
+
+        //                       builder.AddEnvironmentVariables();
+
+        //                       if (args != null)
+        //                       {
+        //                           builder.AddCommandLine(args);
+        //                       }
         //                   })
         //                   .UseStartup<Startup>()
         //                   .Build();
